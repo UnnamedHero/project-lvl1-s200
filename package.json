@@ -1,6 +1,6 @@
 {
   "name": "eem-hexlet-brain-games",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Hexlet study project #1. ",
   "main": "index.js",
   "bin": {
