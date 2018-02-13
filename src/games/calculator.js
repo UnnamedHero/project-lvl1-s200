@@ -8,11 +8,11 @@ const CALC_GAME_MAX_STEPS = 3;
 const getCorrectAnswer = (num1, num2, operationNum) => {
   switch (operationNum) {
     case 1:
-      return num1 + num2;
+      return num1 * num2;
     case 2:
       return num1 - num2;
     case 3:
-      return num1 * num2;
+      return num1 + num2;
     default:
       throw new Error(`unexpected number ${operationNum}. Max is ${MAX_OPERATIONS}`);
   }
@@ -34,7 +34,7 @@ const getOperationSign = (stepNum) => {
 const getQuestionData = (step) => {
   const num1 = getRandomNumber(MAX_NUM);
   const num2 = getRandomNumber(MAX_NUM);
-  const operationSign = getOperationSign();
+  const operationSign = getOperationSign(step);
   const correctAnswer = getCorrectAnswer(num1, num2, step);
   return {
     questionText: `${num1} ${operationSign} ${num2}`,
