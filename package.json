@@ -1,9 +1,10 @@
 {
   "name": "eem-hexlet-brain-games",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Hexlet study project #1. ",
   "main": "index.js",
   "bin": {
+    "brain-calc": "dist/bin/brain-calc.js",
     "brain-even": "dist/bin/brain-even.js",
     "brain-games": "dist/bin/brain-games.js"
   },
