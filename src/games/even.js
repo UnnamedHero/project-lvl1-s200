@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { showGreetings, getUserName } from '.';
+import { showGreetings, getUserName } from '..';
 
 const MAX_NUM = 100;
 const EVEN_GAME_MAX_STEPS = 3;
