@@ -1,10 +1,10 @@
 import readlineSync from 'readline-sync';
-import { showGreetings, getUserName } from '..';
+import { showGreetings, getUserName, getRandomNumber } from '..';
 
 const MAX_NUM = 100;
 const EVEN_GAME_MAX_STEPS = 3;
 
-const getRandomNumber = () => Math.ceil(Math.random() * MAX_NUM);
+//  const getRandomNumber = () => Math.ceil(Math.random() * MAX_NUM);
 
 const isEvenNumber = num => num % 2 === 0;
 
@@ -15,7 +15,7 @@ const startEvenGame = (userName) => {
       console.log(winText);
       return;
     }
-    const num = getRandomNumber();
+    const num = getRandomNumber(MAX_NUM);
     const expectedAnswer = isEvenNumber(num) ? 'yes' : 'no';
     console.log(`Question: ${num}`);
     const userAnswer = readlineSync.question('Your answer: ');
