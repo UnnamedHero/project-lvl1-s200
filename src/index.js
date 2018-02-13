@@ -41,7 +41,7 @@ export const playGame = (game) => {
       return;
     }
     console.log('Correct!');
-    gameIter(step - 2);
+    gameIter(step - 1);
   };
   gameIter(gameStepsNum);
 };
