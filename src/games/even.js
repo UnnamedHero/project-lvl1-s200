@@ -1,39 +1,39 @@
-import readlineSync from 'readline-sync';
-import { showGreetings, getUserName, getRandomNumber } from '..';
+import { getRandomNumber, playGame } from '..';
 
+const gameText = 'Answer "yes" if number even otherwise answer "no"';
 const MAX_NUM = 100;
 const EVEN_GAME_MAX_STEPS = 3;
 
-//  const getRandomNumber = () => Math.ceil(Math.random() * MAX_NUM);
-
 const isEvenNumber = num => num % 2 === 0;
 
-const startEvenGame = (userName) => {
-  const gameIter = (step) => {
-    if (step === 0) {
-      const winText = `Congratulations, ${userName}!`;
-      console.log(winText);
-      return;
-    }
-    const num = getRandomNumber(MAX_NUM);
-    const expectedAnswer = isEvenNumber(num) ? 'yes' : 'no';
-    console.log(`Question: ${num}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-    if (userAnswer.toLowerCase() !== expectedAnswer) {
-      const looseText = `'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.\nLet's try again, ${userName}!`;
-      console.log(looseText);
-      return;
-    }
-    console.log('Correct!');
-    gameIter(step - 1);
+const getCorrectAnswer = num => (isEvenNumber(num) ? 'yes' : 'no');
+
+const getQuestionData = () => {
+  const num = getRandomNumber(MAX_NUM);
+  const correctAnswer = getCorrectAnswer(num);
+  return {
+    questionText: `${num}`,
+    correctAnswer,
   };
-  gameIter(EVEN_GAME_MAX_STEPS);
+};
+
+const getEvenLogic = () => {
+  const evenLogic = (message) => {
+    switch (message) {
+      case 'getDescription':
+        return gameText;
+      case 'getQuestionData':
+        return getQuestionData();
+      case 'getStepsNum':
+        return EVEN_GAME_MAX_STEPS;
+      default:
+        throw new Error(`unknown message ${message}`);
+    }
+  };
+  return evenLogic;
 };
 
 export default() => {
-  const greetingText = 'Answer "yes" if number even otherwise answer "no"';
-  showGreetings(greetingText);
-  const userName = getUserName();
-  startEvenGame(userName);
+  playGame(getEvenLogic());
 };
 
