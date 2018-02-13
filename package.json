@@ -4,6 +4,7 @@
   "description": "Hexlet study project #1. ",
   "main": "index.js",
   "bin": {
+    "brain-even": "dist/bin/brain-even.js",
     "brain-games": "dist/bin/brain-games.js"
   },
   "files": [
