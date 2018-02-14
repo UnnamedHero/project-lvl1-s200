@@ -22,7 +22,6 @@ const getGameDesc = game => game('getDescription');
 const getGameQuestionData = (game, currentStep) => game('getQuestionData', currentStep);
 
 export const playGame = (game) => {
-  //  const game = abstractGame();
   const gameDesc = getGameDesc(game);
   showGreetings(gameDesc);
   const userName = getUserName();
