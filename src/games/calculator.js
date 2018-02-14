@@ -17,8 +17,8 @@ const getCorrectAnswer = (num1, num2, operationNum) => {
   }
 };
 
-const getOperationSign = (stepNum) => {
-  switch (stepNum) {
+const getOperationSign = (operationNum) => {
+  switch (operationNum) {
     case 1:
       return '*';
     case 2:
@@ -26,15 +26,16 @@ const getOperationSign = (stepNum) => {
     case 3:
       return '+';
     default:
-      throw new Error(`unexpected number ${stepNum}. Max is ${MAX_OPERATIONS}`);
+      throw new Error(`unexpected number ${operationNum}. Max is ${MAX_OPERATIONS}`);
   }
 };
 
-const getQuestionData = (step) => {
+const getQuestionData = () => {
   const num1 = getRandomNumber(MAX_NUM);
   const num2 = getRandomNumber(MAX_NUM);
-  const operationSign = getOperationSign(step);
-  const correctAnswer = getCorrectAnswer(num1, num2, step);
+  const operationNum = getRandomNumber(MAX_OPERATIONS);
+  const operationSign = getOperationSign(operationNum);
+  const correctAnswer = getCorrectAnswer(num1, num2, operationNum);
   return {
     questionText: `${num1} ${operationSign} ${num2}`,
     correctAnswer,
@@ -42,12 +43,12 @@ const getQuestionData = (step) => {
 };
 
 const getCalcLogic = () => {
-  const calcLogic = (message, param) => {
+  const calcLogic = (message) => {
     switch (message) {
       case 'getDescription':
         return gameText;
       case 'getQuestionData':
-        return getQuestionData(param);
+        return getQuestionData();
       default:
         throw new Error(`unknown message ${message}`);
     }

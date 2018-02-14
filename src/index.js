@@ -19,7 +19,7 @@ export const getRandomNumber = maxNum => Math.ceil(Math.random() * maxNum);
 
 const getGameDesc = game => game('getDescription');
 
-const getGameQuestionData = (game, currentStep) => game('getQuestionData', currentStep);
+const getGameQuestionData = game => game('getQuestionData');
 
 export const playGame = (game) => {
   const gameDesc = getGameDesc(game);
@@ -30,7 +30,7 @@ export const playGame = (game) => {
       console.log(`Congratulations, ${userName}!`);
       return;
     }
-    const { questionText, correctAnswer } = getGameQuestionData(game, step);
+    const { questionText, correctAnswer } = getGameQuestionData(game);
     console.log(`Question: ${questionText}`);
     const userAnswer = readlineSync.question('Your answer: ');
     if (correctAnswer.toString() !== userAnswer) {
