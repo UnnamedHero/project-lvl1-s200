@@ -1,6 +1,6 @@
 import { getRandomNumber, playGame } from '..';
 
-const gameText = 'What number is missing tn this progression?';
+const gameText = 'What number is missing in this progression?';
 const PROGRESS_LENGTH = 10;
 const MAX_NUM = 10;
 const MAX_PROGRESSION_STEP = 30;
