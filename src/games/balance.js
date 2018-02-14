@@ -10,14 +10,11 @@ const getMinNumberIndex = splittedNum => splittedNum.reduce((acc, item, index) =
 const getMaxNumberIndex = splittedNum => splittedNum.reduce((acc, item, index) =>
   (item > splittedNum[acc] ? index : acc), MIN_INDEX);
 
+const isBalanced = (splittedNum, minDigitIndex, maxDigitIndex) =>
+  (Number(splittedNum[maxDigitIndex]) - Number(splittedNum[minDigitIndex]) <= 1);
 
-const balancer = (splittedNum) => {
-  const minDigitIndex = getMinNumberIndex(splittedNum);
-  const maxDigitIndex = getMaxNumberIndex(splittedNum);
-  if (Number(splittedNum[maxDigitIndex]) - Number(splittedNum[minDigitIndex]) <= 1) {
-    return splittedNum;
-  }
-  const newSplittedNum = splittedNum.map((item, index) => {
+const balancer = (splittedNum, minDigitIndex, maxDigitIndex) =>
+  splittedNum.map((item, index) => {
     if (index === minDigitIndex) {
       return item + 1;
     }
@@ -26,12 +23,19 @@ const balancer = (splittedNum) => {
     }
     return item;
   });
-  return balancer(newSplittedNum);
+
+const getBalancedNumber = (splittedNum) => {
+  const minDigitIndex = getMinNumberIndex(splittedNum);
+  const maxDigitIndex = getMaxNumberIndex(splittedNum);
+  if (isBalanced(splittedNum, minDigitIndex, maxDigitIndex)) {
+    return splittedNum;
+  }
+  return getBalancedNumber(balancer(splittedNum, minDigitIndex, maxDigitIndex));
 };
 
 const getCorrectAnswer = (num) => {
   const splittedNumber = Array.from(num.toString()).map(item => Number(item));
-  const balancedNumber = balancer(splittedNumber);
+  const balancedNumber = getBalancedNumber(splittedNumber);
   return balancedNumber.sort().join('');
 };
 
