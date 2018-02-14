@@ -2,7 +2,6 @@ import { getRandomNumber, playGame } from '..';
 
 const gameText = 'Find the greatest common divisor of given numbers';
 const MAX_NUM = 100;
-const GCD_GAME_MAX_STEPS = 3;
 
 const getCorrectAnswer = (num1, num2) => {
   const euclidIter = (n1, n2) => {
@@ -35,8 +34,6 @@ const getGCDLogic = () => {
         return gameText;
       case 'getQuestionData':
         return getQuestionData();
-      case 'getStepsNum':
-        return GCD_GAME_MAX_STEPS;
       default:
         throw new Error(`unknown message ${message}`);
     }

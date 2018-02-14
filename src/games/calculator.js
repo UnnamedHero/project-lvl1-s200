@@ -3,7 +3,6 @@ import { getRandomNumber, playGame } from '..';
 const gameText = 'What is the result of the expression?';
 const MAX_NUM = 100;
 const MAX_OPERATIONS = 3; // +, -, *
-const CALC_GAME_MAX_STEPS = 3;
 
 const getCorrectAnswer = (num1, num2, operationNum) => {
   switch (operationNum) {
@@ -49,8 +48,6 @@ const getCalcLogic = () => {
         return gameText;
       case 'getQuestionData':
         return getQuestionData(param);
-      case 'getStepsNum':
-        return CALC_GAME_MAX_STEPS;
       default:
         throw new Error(`unknown message ${message}`);
     }

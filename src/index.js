@@ -1,5 +1,7 @@
 import readlineSync from 'readline-sync';
 
+const GAME_STEPS = 3;
+
 export const showGreetings = (gameText) => {
   console.log('Welcome to the Brain Games!');
   if (gameText) {
@@ -17,8 +19,6 @@ export const getRandomNumber = maxNum => Math.ceil(Math.random() * maxNum);
 
 const getGameDesc = game => game('getDescription');
 
-const getGameStepsNum = game => game('getStepsNum');
-
 const getGameQuestionData = (game, currentStep) => game('getQuestionData', currentStep);
 
 export const playGame = (game) => {
@@ -26,7 +26,6 @@ export const playGame = (game) => {
   const gameDesc = getGameDesc(game);
   showGreetings(gameDesc);
   const userName = getUserName();
-  const gameStepsNum = getGameStepsNum(game);
   const gameIter = (step) => {
     if (step === 0) {
       console.log(`Congratulations, ${userName}!`);
@@ -43,5 +42,5 @@ export const playGame = (game) => {
     console.log('Correct!');
     gameIter(step - 1);
   };
-  gameIter(gameStepsNum);
+  gameIter(GAME_STEPS);
 };
