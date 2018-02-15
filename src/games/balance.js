@@ -48,6 +48,4 @@ const getQuestionData = () => {
   };
 };
 
-export default() => {
-  playGame(gameText, getQuestionData);
-};
+export default() => playGame(gameText, getQuestionData);
