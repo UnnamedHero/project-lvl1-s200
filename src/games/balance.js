@@ -13,6 +13,7 @@ const getMaxNumberIndex = splittedNum => splittedNum.reduce((acc, item, index) =
 const isBalanced = (splittedNum, minDigitIndex, maxDigitIndex) =>
   (Number(splittedNum[maxDigitIndex]) - Number(splittedNum[minDigitIndex]) <= 1);
 
+//  TODO: refactor
 const balancer = (splittedNum, minDigitIndex, maxDigitIndex) =>
   splittedNum.map((item, index) => {
     if (index === minDigitIndex) {
@@ -48,20 +49,6 @@ const getQuestionData = () => {
   };
 };
 
-const getBalanceLogic = () => {
-  const balanceLogic = (message) => {
-    switch (message) {
-      case 'getDescription':
-        return gameText;
-      case 'getQuestionData':
-        return getQuestionData();
-      default:
-        throw new Error(`unknown message ${message}`);
-    }
-  };
-  return balanceLogic;
-};
-
 export default() => {
-  playGame(getBalanceLogic());
+  playGame(gameText, getQuestionData);
 };

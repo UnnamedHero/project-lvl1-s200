@@ -17,20 +17,15 @@ export const getUserName = () => {
 
 export const getRandomNumber = maxNum => Math.ceil(Math.random() * maxNum);
 
-const getGameDesc = game => game('getDescription');
-
-const getGameQuestionData = game => game('getQuestionData');
-
-export const playGame = (game) => {
-  const gameDesc = getGameDesc(game);
-  showGreetings(gameDesc);
+export const playGame = (gameText, getGameQuestionData) => {
+  showGreetings(gameText);
   const userName = getUserName();
   const gameIter = (step) => {
     if (step === 0) {
       console.log(`Congratulations, ${userName}!`);
       return;
     }
-    const { questionText, correctAnswer } = getGameQuestionData(game);
+    const { questionText, correctAnswer } = getGameQuestionData();
     console.log(`Question: ${questionText}`);
     const userAnswer = readlineSync.question('Your answer: ');
     if (correctAnswer.toString() !== userAnswer) {

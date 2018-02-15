@@ -16,21 +16,7 @@ const getQuestionData = () => {
   };
 };
 
-const getEvenLogic = () => {
-  const evenLogic = (message) => {
-    switch (message) {
-      case 'getDescription':
-        return gameText;
-      case 'getQuestionData':
-        return getQuestionData();
-      default:
-        throw new Error(`unknown message ${message}`);
-    }
-  };
-  return evenLogic;
-};
-
 export default() => {
-  playGame(getEvenLogic());
+  playGame(gameText, getQuestionData);
 };
 

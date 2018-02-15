@@ -27,20 +27,6 @@ const getQuestionData = () => {
   };
 };
 
-const getGCDLogic = () => {
-  const gcdLogic = (message) => {
-    switch (message) {
-      case 'getDescription':
-        return gameText;
-      case 'getQuestionData':
-        return getQuestionData();
-      default:
-        throw new Error(`unknown message ${message}`);
-    }
-  };
-  return gcdLogic;
-};
-
 export default() => {
-  playGame(getGCDLogic());
+  playGame(gameText, getQuestionData);
 };

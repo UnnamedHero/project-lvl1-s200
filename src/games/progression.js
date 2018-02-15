@@ -28,20 +28,6 @@ const getQuestionData = () => {
   };
 };
 
-const getProgressionLogic = () => {
-  const progressionLogic = (message) => {
-    switch (message) {
-      case 'getDescription':
-        return gameText;
-      case 'getQuestionData':
-        return getQuestionData();
-      default:
-        throw new Error(`unknown message ${message}`);
-    }
-  };
-  return progressionLogic;
-};
-
 export default() => {
-  playGame(getProgressionLogic());
+  playGame(gameText, getQuestionData);
 };

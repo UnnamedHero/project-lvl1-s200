@@ -42,20 +42,6 @@ const getQuestionData = () => {
   };
 };
 
-const getCalcLogic = () => {
-  const calcLogic = (message) => {
-    switch (message) {
-      case 'getDescription':
-        return gameText;
-      case 'getQuestionData':
-        return getQuestionData();
-      default:
-        throw new Error(`unknown message ${message}`);
-    }
-  };
-  return calcLogic;
-};
-
 export default () => {
-  playGame(getCalcLogic());
+  playGame(gameText, getQuestionData);
 };
